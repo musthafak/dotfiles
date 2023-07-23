@@ -9,9 +9,6 @@ Before you proceed with the installation, ensure that you have the following pre
 - **git:**
   Version control system to clone the dotfiles repository.
 
-- **stow:**
-  GNU Stow, a symlink farm manager, to create symbolic links for the configuration files.
-
 ## Installation
 
 Follow the steps below to set up my dotfiles on your system:
