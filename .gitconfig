@@ -1,0 +1,11 @@
+[user]
+  name = Musthafa Kariyaparambil
+
+[credential]
+  helper = cache --timeout 43200
+
+[color]
+  ui = auto
+
+[pull]
+  ff = only

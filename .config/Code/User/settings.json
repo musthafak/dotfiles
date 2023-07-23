@@ -1,0 +1,19 @@
+{
+    "autoDocstring.docstringFormat": "sphinx",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        78,
+        80,
+        88
+    ],
+    "editor.suggestSelection": "first",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.useLibraryCodeForTypes": true,
+    "python.formatting.provider": "black",
+    "python.languageServer": "Pylance",
+    "python.linting.flake8Enabled": true,
+    "python.testing.pytestEnabled": true
+}

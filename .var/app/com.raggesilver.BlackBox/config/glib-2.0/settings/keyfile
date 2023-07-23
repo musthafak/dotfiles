@@ -1,0 +1,21 @@
+[com/raggesilver/BlackBox]
+theme='Solarized Dark'
+font='Hack Nerd Font Mono 12'
+was-maximized=true
+terminal-padding=(5, 5, 5, 5)
+style-preference=2
+theme-dark='Tokyo Night Storm'
+window-show-borders=false
+pretty=true
+show-menu-button=true
+headerbar-drag-area=true
+headerbar-draw-line-single-tab=false
+floating-controls=true
+show-headerbar=true
+theme-light='Pencil Light'
+window-height=617
+window-width=968
+use-custom-scrollback=true
+scrollback-lines=10000
+easy-copy-paste=true
+remember-window-size=true

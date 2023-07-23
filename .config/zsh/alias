@@ -1,0 +1,10 @@
+# Aliases
+alias vi='nvim'
+alias vim='nvim'
+alias .='source'
+alias ls='lsd --icon=never --color=auto'
+alias l='ls -CF'
+alias la='ls -AF'
+alias ll='ls -lrtA'
+alias grep='grep --color=auto'
+alias meld='flatpak run org.gnome.meld'

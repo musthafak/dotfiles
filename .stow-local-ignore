@@ -1,0 +1,9 @@
+\.git
+\.gitignore
+^/README.*
+^/LICENSE.*
+^/COPYING
+bootstrap-fedora-desktop.sh
+bootstrap-debian-wsl.sh
+bootstrap-ubuntu-wsl.sh
+bootstrap-ubuntu-desktop.sh

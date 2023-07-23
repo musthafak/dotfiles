@@ -1,0 +1,3 @@
+.config/nvim/plugin/
+.config/zsh/.zcompdump
+.var/app/
