@@ -30,19 +30,19 @@ cd ~/.dotfiles
 - **Debian WSL2:**
 
 ```bash
-bootstrap_debian_wsl.sh
+./bootstrap_debian_wsl.sh
 ```
 
 - **Ubuntu WSL2:**
 
 ```bash
-bootstrap_ubuntu_wsl.sh
+./bootstrap_ubuntu_wsl.sh
 ```
 
 - **Ubuntu desktop:**
 
 ```bash
-bootstrap_ubuntu_desktop.sh
+./bootstrap_ubuntu_desktop.sh
 ```
 
 - **Fedora workstation:**

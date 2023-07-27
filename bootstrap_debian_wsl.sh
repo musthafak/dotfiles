@@ -3,10 +3,10 @@
 set -e
 
 # Update and install packages
-echo "deb http://deb.debian.org/debian bullseye-backports main contrib non-free" | \
+echo "deb http://deb.debian.org/debian bookworm-backports main contrib non-free" | \
     sudo tee /etc/apt/sources.list.d/backports.list
-sudo apt update && sudo apt -t bullseye-backports upgrade -y
-sudo apt install -y stow htop zsh tmux wget curl git zip -t bullseye-backports
+sudo apt update && sudo apt -t bookworm-backports upgrade -y
+sudo apt install -y stow htop zsh tmux wget curl git zip -t bookworm-backports
 wget https://github.com/Peltoche/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.deb \
     -O /tmp/lsd_0.23.1_amd64.deb
 sudo dpkg -i /tmp/lsd_0.23.1_amd64.deb && rm /tmp/lsd_0.23.1_amd64.deb
@@ -19,7 +19,7 @@ wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim.appimage \
     -O $LOCAL_BIN_DIR/nvim
 chmod a+x $LOCAL_BIN_DIR/nvim
 sudo apt install -y python3-neovim python3-pip python3-venv build-essential nodejs npm \
-    ripgrep fd-find fuse entr -t bullseye-backports
+    ripgrep fd-find fuse entr -t bookworm-backports
 sudo apt remove -y xclip
 pushd $LOCAL_BIN_DIR
 wget https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip
@@ -30,10 +30,10 @@ popd
 sudo usermod -s /usr/bin/zsh $USER
 
 # Build below mentioned python packages for development
-PYTHON_VERSIONS="3.11.2 3.9.16"
+PYTHON_VERSIONS="3.11.4 3.9.17"
 sudo apt install -y build-essential libncurses5-dev zlib1g-dev libnss3-dev libgdbm-dev \
     libssl-dev libsqlite3-dev libffi-dev libreadline-dev libbz2-dev tk-dev wget \
-    -t bullseye-backports
+    -t bookworm-backports
 LOCAL_BUILDS_DIR=$LOCAL_BIN_DIR/builds
 [[ ! -d $LOCAL_BUILDS_DIR ]] && mkdir -p $LOCAL_BUILDS_DIR
 pushd $LOCAL_BUILDS_DIR
