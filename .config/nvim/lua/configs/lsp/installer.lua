@@ -6,9 +6,6 @@ if not deps_ok then
 end
 
 local language_servers = {
-    "dockerls",
-    "docker_compose_language_service",
-    "groovyls",
     "lua_ls",
     "pyright",
 }
