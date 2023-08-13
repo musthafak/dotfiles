@@ -12,7 +12,7 @@ wget https://github.com/Peltoche/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.d
 sudo dpkg -i /tmp/lsd_0.23.1_amd64.deb && rm /tmp/lsd_0.23.1_amd64.deb
 
 LOCAL_BIN_DIR="$HOME/.local/bin"
-[[ ! -d $LOCAL_BIN_DIR ]] && mkdir $LOCAL_BIN_DIR
+[[ ! -d $LOCAL_BIN_DIR ]] && mkdir -p $LOCAL_BIN_DIR
 
 # Install neovim
 wget https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage \
