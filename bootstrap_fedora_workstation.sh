@@ -47,7 +47,7 @@ fi
 # Download and setup config files
 DOTFILES_PATH=$USER_WORKSPACE/dotfiles
 if [[ ! -d $DOTFILES_PATH ]]; then
-    git clone git@github.com:musthafak/dotfiles.git $DOTFILES_PATH
+    git clone https://github.com/musthafak/dotfiles.git $DOTFILES_PATH
 else
     git -C $DOTFILES_PATH pull --ff
 fi

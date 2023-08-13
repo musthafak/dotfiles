@@ -21,7 +21,7 @@ LOCAL_BIN_DIR="$HOME/.local/bin"
 [[ ! -d $LOCAL_BIN_DIR ]] && mkdir -p $LOCAL_BIN_DIR
 
 # Install NeoVim
-wget https://github.com/neovim/neovim/releases/download/v0.9.0/nvim.appimage -O $LOCAL_BIN_DIR/nvim
+wget https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage -O $LOCAL_BIN_DIR/nvim
 chmod a+x $LOCAL_BIN_DIR/nvim
 sudo apt install -y python3-neovim python3-pip python3-venv build-essential ripgrep fd-find libfuse2 entr jq nodejs npm
 
@@ -36,7 +36,7 @@ USER_WORKSPACE=$HOME/workspace/$USER
 # Download and setup config files
 DOTFILES_PATH=$USER_WORKSPACE/dotfiles
 if [[ ! -d $DOTFILES_PATH ]]; then
-    git clone git@github.com:musthafak/dotfiles.git $DOTFILES_PATH
+    git clone https://github.com/musthafak/dotfiles.git $DOTFILES_PATH
 else
     git -C $DOTFILES_PATH pull --ff
 fi
