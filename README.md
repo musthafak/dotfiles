@@ -13,49 +13,37 @@ Before you proceed with the installation, ensure that you have the following pre
 
 Follow the steps below to set up my dotfiles on your system:
 
-1. Clone the repository to your home directory:
+1. Choose the appropriate bootstrap script for your system and run it. Use one of the following options:
 
-```bash
-git clone https://github.com/musthafak/dotfiles.git ~/.dotfiles
-```
+   - **Debian WSL2:**
 
-2. Change into the dotfiles directory:
+     ```bash
+     wget -q https://raw.githubusercontent.com/musthafak/dotfiles/main/bootstrap_debian_wsl.sh -O - | bash
+     ```
 
-```bash
-cd ~/.dotfiles
-```
+   - **Ubuntu WSL2:**
 
-3. Choose the appropriate bootstrap script for your system and run it. Use one of the following options:
+     ```bash
+     wget -q https://raw.githubusercontent.com/musthafak/dotfiles/main/bootstrap_ubuntu_wsl.sh -O - | bash
+     ```
 
-- **Debian WSL2:**
+   - **Ubuntu desktop:**
 
-```bash
-./bootstrap_debian_wsl.sh
-```
+     ```bash
+     wget -q https://raw.githubusercontent.com/musthafak/dotfiles/main/bootstrap_ubuntu_desktop.sh -O - | bash
+     ```
 
-- **Ubuntu WSL2:**
+   - **Fedora workstation:**
 
-```bash
-./bootstrap_ubuntu_wsl.sh
-```
+     ```bash
+     wget -q https://raw.githubusercontent.com/musthafak/dotfiles/main/bootstrap_fedora_workstation.sh -O - | bash
+     ```
 
-- **Ubuntu desktop:**
+2. Update the font cache for proper display of fonts:
 
-```bash
-./bootstrap_ubuntu_desktop.sh
-```
-
-- **Fedora workstation:**
-
-```bash
-./bootstrap_fedora_workstation.sh
-```
-
-4. Update the font cache for proper display of fonts:
-
-```bash
-fc-cache -f -v
-```
+   ```bash
+   fc-cache -f -v
+   ```
 
 ## Usage
 
@@ -65,4 +53,4 @@ Feel free to explore and modify these dotfiles according to your preferences. Yo
 
 ## Feedback and Contributions
 
-I'm continuously improving my dotfiles to make them even more useful and robust. If you have any suggestions, find any issues, or want to contribute improvements, feel free to open an issue or submit a pull request on this repository.
+I'm continuously improving my dotfiles to make them even more useful and robust. If you have any suggestions or want to contribute improvements, feel free to open an issue or submit a pull request on this repository.
