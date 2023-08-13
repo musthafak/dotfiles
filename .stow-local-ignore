@@ -3,7 +3,7 @@
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
-bootstrap-fedora-desktop.sh
-bootstrap-debian-wsl.sh
-bootstrap-ubuntu-wsl.sh
-bootstrap-ubuntu-desktop.sh
+bootstrap_debian_wsl.sh
+bootstrap_ubuntu_wsl.sh
+bootstrap_ubuntu_desktop.sh
+bootstrap_fedora_workstation.sh
