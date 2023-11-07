@@ -1,0 +1,77 @@
+[
+    {
+        "command": "selectNextQuickFix",
+        "key": "tab",
+        "when": "editorFocus && quickFixWidgetVisible"
+    },
+    {
+        "command": "selectPrevQuickFix",
+        "key": "shift+tab",
+        "when": "editorFocus && quickFixWidgetVisible"
+    },
+    {
+        "command": "selectNextSuggestion",
+        "key": "tab",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "command": "selectPrevSuggestion",
+        "key": "shift+tab",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "command": "workbench.action.toggleSidebarVisibility",
+        "key": "ctrl+e"
+    },
+    {
+        "command": "workbench.files.action.focusFilesExplorer",
+        "key": "ctrl+e",
+        "when": "editorTextFocus"
+    },
+    {
+        "command": "explorer.newFile",
+        "key": "a",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "command": "renameFile",
+        "key": "r",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "command": "filesExplorer.copy",
+        "key": "c",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "command": "filesExplorer.paste",
+        "key": "p",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "command": "deleteFile",
+        "key": "d",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "command": "workbench.action.terminal.toggleTerminal",
+        "key": "ctrl+t",
+        "when": "terminal.active"
+    },
+    {
+        "command": "workbench.action.navigateLeft",
+        "key": "ctrl+h"
+    },
+    {
+        "command": "workbench.action.navigateRight",
+        "key": "ctrl+l"
+    },
+    {
+        "command": "workbench.action.navigateUp",
+        "key": "ctrl+k"
+    },
+    {
+        "command": "workbench.action.navigateDown",
+        "key": "ctrl+j"
+    }
+]

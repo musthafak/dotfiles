@@ -3,17 +3,165 @@
     "editor.codeActionsOnSave": {
         "source.organizeImports": true
     },
+    "editor.cursorSurroundingLines": 5,
     "editor.formatOnSave": true,
+    "editor.language.colorizedBracketPairs": [],
+    "editor.lineNumbers": "relative",
     "editor.rulers": [
-        78,
         80,
         88
     ],
-    "editor.suggestSelection": "first",
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.useLibraryCodeForTypes": true,
-    "python.formatting.provider": "black",
-    "python.languageServer": "Pylance",
-    "python.linting.flake8Enabled": true,
-    "python.testing.pytestEnabled": true
+    "editor.wordWrap": "on",
+    "extensions.ignoreRecommendations": false,
+    "files.exclude": {
+        "**/.venv": true,
+        "**/venv3": true
+    },
+    "python.analysis.completeFunctionParens": true,
+    "python.testing.pytestEnabled": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "update.showReleaseNotes": false,
+    "vim.foldfix": true,
+    "vim.highlightedyank.enable": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "after": [
+                "<Esc>"
+            ],
+            "before": [
+                "j",
+                "k"
+            ]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "w"
+            ],
+            "commands": [
+                ":w!"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "q"
+            ],
+            "commands": [
+                ":q!"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "x"
+            ],
+            "commands": [
+                ":x!"
+            ]
+        },
+        {
+            "after": [
+                "g",
+                "g",
+                "V",
+                "G"
+            ],
+            "before": [
+                "<c-a>"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "k"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "[",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "d",
+                "s"
+            ],
+            "commands": [
+                "autoDocstring.generateDocstring"
+            ]
+        },
+        {
+            "before": [
+                "<tab>"
+            ],
+            "commands": [
+                ":bnext"
+            ]
+        },
+        {
+            "before": [
+                "shift+tab"
+            ],
+            "commands": [
+                ":bprevious"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.showAllEditors"
+            ]
+        }
+    ],
+    "vim.useSystemClipboard": true,
+    "window.restoreWindows": "none",
+    "workbench.colorTheme": "Tokyo Night Storm",
+    "workbench.settings.editor": "json",
+    "workbench.startupEditor": "none",
+    "zenMode.hideLineNumbers": false
 }
