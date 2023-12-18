@@ -1,5 +1,5 @@
 return {
-    "jose-elias-alvarez/null-ls.nvim", -- configure formatters & linters
+    "nvimtools/none-ls.nvim", -- configure formatters & linters
     event = { "BufReadPre", "BufNewFile" },
     config = function()
         -- import null-ls plugin
