@@ -30,7 +30,7 @@ popd
 sudo usermod -s /usr/bin/zsh $USER
 
 # Build below mentioned python packages for development
-PYTHON_VERSIONS="3.11.4 3.9.17"
+PYTHON_VERSIONS="3.12.1 3.9.18"
 sudo apt install -y build-essential libncurses5-dev zlib1g-dev libnss3-dev libgdbm-dev \
     libssl-dev libsqlite3-dev libffi-dev libreadline-dev libbz2-dev tk-dev wget \
     -t bookworm-backports
