@@ -19,7 +19,7 @@ wget https://github.com/nelsonenzo/tmux-appimage/releases/download/3.2a/tmux.app
 chmod a+x $LOCAL_BIN_DIR/tmux
 
 # Install neovim
-wget https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage \
+wget https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage \
     -O $LOCAL_BIN_DIR/nvim
 chmod a+x $LOCAL_BIN_DIR/nvim
 sudo apt install -y python3-neovim python3-pip python3-venv build-essential \
