@@ -140,6 +140,11 @@ return {
       },
     })
 
+    require'lspconfig'.jdtls.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
     require'lspconfig'.robotframework_ls.setup{}
   end,
 }

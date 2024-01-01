@@ -21,6 +21,7 @@ return {
       -- list of servers for mason to install
       ensure_installed = {
         "lua_ls",
+        "jdtls",
         "pyright",
       },
       -- auto-install configured servers (with lspconfig)
