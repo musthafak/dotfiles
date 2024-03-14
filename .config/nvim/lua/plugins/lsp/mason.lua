@@ -30,8 +30,7 @@ return {
 
     mason_null_ls.setup({
       -- list of formatters & linters for mason to install
-      ensure_installed = {
-      },
+      ensure_installed = {},
       -- auto-install configured servers (with lspconfig)
       automatic_installation = false,
     })
