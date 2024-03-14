@@ -1,3 +1,54 @@
+-- Function to check if a value exists in the table
+local function is_value_exists_in_table(tbl, value)
+  for _, v in ipairs(tbl) do
+    if v == value then
+      return true
+    end
+  end
+  return false
+end
+
+-- Function to get the lsp server name
+local function get_lsp_server_name(lsp_config)
+  local server_names = {
+    ["lua-language-server"] = "lua_ls",
+    ["bash-language-server"] = "bashls",
+  }
+  if server_names[lsp_config.name] ~= nil then
+    return server_names[lsp_config.name]
+  end
+  return lsp_config.name
+end
+
+local lsp_settings = {
+  pyright = {
+    python = {
+      analysis = {
+        autoImportCompletions = true,
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        typeCheckingMode = "off",
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+  lua_ls = {
+    Lua = {
+      -- make the language server recognize "vim" global
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        -- make language server aware of runtime files
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.stdpath("config") .. "/lua"] = true,
+        },
+      },
+    },
+  },
+}
+
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -14,6 +65,9 @@ return {
 
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+    -- import mason-registry plugin
+    local mason_registry = require("mason-registry")
 
     local keymap = vim.keymap -- for conciseness
 
@@ -102,49 +156,24 @@ return {
       border = "rounded",
     })
 
-    -- configure pyright server (with special settings)
-    lspconfig["pyright"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = {
-        python = {
-          analysis = {
-            autoImportCompletions = true,
-            autoSearchPaths = true,
-            diagnosticMode = "workspace",
-            typeCheckingMode = "off",
-            useLibraryCodeForTypes = true,
-          },
-        },
-      },
-    })
-
-    -- configure lua server (with special settings)
-    lspconfig["lua_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = { -- custom settings for lua
-        Lua = {
-          -- make the language server recognize "vim" global
-          diagnostics = {
-            globals = { "vim" },
-          },
-          workspace = {
-            -- make language server aware of runtime files
-            library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true,
-            },
-          },
-        },
-      },
-    })
-
-    require'lspconfig'.jdtls.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    require'lspconfig'.robotframework_ls.setup{}
+    for _, server in ipairs(mason_registry.get_installed_packages()) do
+      if not is_value_exists_in_table(server.spec.categories, "LSP") then
+        goto continue
+      end
+      server_name = get_lsp_server_name(server)
+      if lsp_settings[server_name] ~= nil then
+        lspconfig[server_name].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+          settings = lsp_settings[server_name],
+        })
+      else
+        lspconfig[server_name].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+        })
+      end
+      ::continue::
+    end
   end,
 }
