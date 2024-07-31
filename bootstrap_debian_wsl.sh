@@ -7,15 +7,17 @@ echo "deb http://deb.debian.org/debian bookworm-backports main contrib non-free"
     sudo tee /etc/apt/sources.list.d/backports.list
 sudo apt update && sudo apt -t bookworm-backports upgrade -y
 sudo apt install -y stow htop zsh tmux wget curl git zip -t bookworm-backports
-wget https://github.com/Peltoche/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.deb \
-    -O /tmp/lsd_0.23.1_amd64.deb
-sudo dpkg -i /tmp/lsd_0.23.1_amd64.deb && rm /tmp/lsd_0.23.1_amd64.deb
+
+# LSD - A better ls
+wget https://github.com/lsd-rs/lsd/releases/download/v1.1.2/lsd_1.1.2_amd64.deb \
+    -O /tmp/lsd_1.1.2_amd64.deb
+sudo dpkg -i /tmp/lsd_1.1.2_amd64.deb && rm /tmp/lsd_1.1.2_amd64.deb
 
 LOCAL_BIN_DIR="$HOME/.local/bin"
 [[ ! -d $LOCAL_BIN_DIR ]] && mkdir -p $LOCAL_BIN_DIR
 
 # Install neovim
-wget https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage \
+wget https://github.com/neovim/neovim/releases/download/v0.10.1/nvim.appimage \
     -O $LOCAL_BIN_DIR/nvim
 chmod a+x $LOCAL_BIN_DIR/nvim
 sudo apt install -y python3-neovim python3-pip python3-venv build-essential nodejs npm \

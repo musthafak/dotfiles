@@ -21,7 +21,7 @@ LOCAL_BIN_DIR="$HOME/.local/bin"
 [[ ! -d $LOCAL_BIN_DIR ]] && mkdir -p $LOCAL_BIN_DIR
 
 # Install NeoVim
-wget https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage \
+wget https://github.com/neovim/neovim/releases/download/v0.10.1/nvim.appimage \
     -O $LOCAL_BIN_DIR/nvim
 chmod a+x $LOCAL_BIN_DIR/nvim
 sudo apt install -y python3-neovim python3-pip python3-venv build-essential \
