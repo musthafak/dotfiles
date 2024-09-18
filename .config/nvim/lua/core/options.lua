@@ -52,6 +52,8 @@ for key, value in pairs(local_options) do
   vim.opt_local[key] = value
 end
 
+vim.opt["iskeyword"]:remove("_")
+
 local append_options = {
   shortmess = "c", -- :h shortmess
   whichwrap = "<,>,[,]",

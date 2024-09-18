@@ -53,8 +53,5 @@ keymap.set("x", "<A-k>", "<cmd>move '<-2<cr>gv-gv", opts)
 keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded', float = true })<cr>", opts)
 keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded', float = true })<cr>", opts)
 
--- Format code
-keymap.set("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", opts)
-
 -- Code actions
 keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
