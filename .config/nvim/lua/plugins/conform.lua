@@ -13,6 +13,7 @@ return {
         yaml = { "yamlfmt" },
         json = { "prettierd" },
         lua = { "stylua" },
+        toml = { "taplo" },
         ["*"] = { "codespell" },
         ["_"] = { "trim_whitespace" },
       },
