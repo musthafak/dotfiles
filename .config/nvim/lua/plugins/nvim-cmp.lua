@@ -10,12 +10,15 @@ return {
     "rafamadriz/friendly-snippets", -- useful snippets
     "musthafak/neogen", -- docstring generator
     "nvim-treesitter/nvim-treesitter", -- neogen requirements
+    "zbirenbaum/copilot-cmp", -- copilot completion
   },
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local neogen = require("neogen")
     local lspkind = require("lspkind")
+
+    require("copilot_cmp").setup()
 
     require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -92,9 +95,11 @@ return {
           mode = "symbol_text",
           maxwidth = 50,
           ellipsis_char = "...",
+          symbol_map = { Copilot = "" },
         }),
       },
       sources = cmp.config.sources({
+        { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "nvim_lsp_signature_help" },
