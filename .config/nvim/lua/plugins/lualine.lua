@@ -30,31 +30,26 @@ local components = {
   },
   lsp_clients = {
     function()
-      local buf_clients = vim.lsp.buf_get_clients()
-      if next(buf_clients) == nil then
-        return ""
-      end
-
       local buf_client_names = {}
-
-      -- add client
-      local is_null_ls_enabled = false
+      local buf_clients = vim.lsp.get_clients()
+      -- lsp clients
       for _, client in pairs(buf_clients) do
-        if client.name ~= "null-ls" then
-          table.insert(buf_client_names, client.name)
-        else
-          is_null_ls_enabled = true
+        table.insert(buf_client_names, client.name)
+      end
+      -- nvim-lint linters
+      local lint_status, lint = pcall(require, "lint")
+      if lint_status then
+        local linters = lint.linters_by_ft[vim.bo.filetype]
+        for _, value in ipairs(linters) do
+          table.insert(buf_client_names, value)
         end
       end
-      if is_null_ls_enabled then
-        local s = require("null-ls.sources")
-        local available_sources = s.get_available(vim.bo.filetype)
-        for _, source in ipairs(available_sources) do
-          for method in pairs(source.methods) do
-            if method == "NULL_LS_FORMATTING" or method == "NULL_LS_DIAGNOSTICS" then
-              table.insert(buf_client_names, source.name)
-            end
-          end
+      -- conform formatters
+      local conform_status, conform = pcall(require, "conform")
+      if conform_status then
+        local formatters = conform.list_formatters_for_buffer()
+        for _, formatter in ipairs(formatters) do
+          table.insert(buf_client_names, formatter)
         end
       end
       if next(buf_client_names) == nil then

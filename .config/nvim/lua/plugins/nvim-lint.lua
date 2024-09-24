@@ -1,5 +1,9 @@
 return {
   "mfussenegger/nvim-lint",
+  dependencies = {
+    "williamboman/mason.nvim",
+    "rshkarin/mason-nvim-lint",
+  },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lint = require("lint")
@@ -17,6 +21,15 @@ return {
       callback = function()
         lint.try_lint()
       end,
+    })
+    require("mason-nvim-lint").setup({
+      ensure_installed = {
+        "eslint_d",
+        "yamllint",
+        "jsonlint",
+        "luacheck",
+      },
+      automatic_installation = false,
     })
   end,
 }

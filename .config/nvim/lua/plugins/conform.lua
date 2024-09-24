@@ -1,5 +1,9 @@
 return {
   "stevearc/conform.nvim",
+  dependencies = {
+    "williamboman/mason.nvim",
+    "zapling/mason-conform.nvim",
+  },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local conform = require("conform")
@@ -17,6 +21,11 @@ return {
         ["*"] = { "codespell" },
         ["_"] = { "trim_whitespace" },
       },
+    })
+
+    -- install formatters
+    require("mason-conform").setup({
+      ignore_install = { "isort", "black" },
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>fm", function()

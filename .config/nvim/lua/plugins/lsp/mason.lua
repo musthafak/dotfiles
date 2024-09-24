@@ -2,8 +2,6 @@ return {
   "williamboman/mason.nvim",
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
-    "zapling/mason-conform.nvim",
-    "rshkarin/mason-nvim-lint",
   },
   config = function()
     -- import mason-lspconfig plugin safely
@@ -21,8 +19,5 @@ return {
       -- auto-install configured servers (with lspconfig)
       automatic_installation = false, -- not the same as ensure_installed
     })
-
-    require("mason-conform").setup({})
-    require("mason-nvim-lint").setup({})
   end,
 }
