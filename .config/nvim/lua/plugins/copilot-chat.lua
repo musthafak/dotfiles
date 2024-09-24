@@ -8,6 +8,7 @@ end
 return {
   "CopilotC-Nvim/CopilotChat.nvim",
   branch = "canary",
+  event = { "VeryLazy" },
   dependencies = {
     { "zbirenbaum/copilot.lua" },
     { "nvim-telescope/telescope.nvim" },

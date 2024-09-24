@@ -3,6 +3,7 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
   },
+  event = { "VeryLazy" },
   config = function()
     -- import mason-lspconfig plugin safely
     local mason_lspconfig = require("mason-lspconfig")

@@ -4,7 +4,7 @@ return {
     "williamboman/mason.nvim",
     "zapling/mason-conform.nvim",
   },
-  event = { "BufReadPre", "BufNewFile" },
+  event = { "VeryLazy" },
   config = function()
     local conform = require("conform")
     conform.setup({
@@ -17,7 +17,6 @@ return {
         yaml = { "yamlfmt" },
         json = { "prettierd" },
         lua = { "stylua" },
-        toml = { "taplo" },
         ["*"] = { "codespell" },
         ["_"] = { "trim_whitespace" },
       },

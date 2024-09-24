@@ -4,7 +4,7 @@ return {
     "williamboman/mason.nvim",
     "rshkarin/mason-nvim-lint",
   },
-  event = { "BufReadPre", "BufNewFile" },
+  event = { "VeryLazy" },
   config = function()
     local lint = require("lint")
     lint.linters_by_ft = {
@@ -16,7 +16,7 @@ return {
       lua = { "luacheck" },
     }
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-    vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+    vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
       group = lint_augroup,
       callback = function()
         lint.try_lint()

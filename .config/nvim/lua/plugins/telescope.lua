@@ -7,6 +7,7 @@ return {
     "nvim-telescope/telescope-ui-select.nvim",
     "nvim-tree/nvim-web-devicons",
   },
+  event = { "VeryLazy" },
   config = function()
     -- import telescope plugin safely
     local telescope = require("telescope")
