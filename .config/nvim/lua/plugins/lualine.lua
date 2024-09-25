@@ -31,8 +31,8 @@ local components = {
   lsp_clients = {
     function()
       local buf_client_names = {}
-      local buf_clients = vim.lsp.get_clients()
       -- lsp clients
+      local buf_clients = vim.lsp.get_clients()
       for _, client in pairs(buf_clients) do
         table.insert(buf_client_names, client.name)
       end
@@ -72,6 +72,11 @@ return {
       disabled_filetypes = { "alpha", "NvimTree", "Outline" },
       always_divide_middle = true,
       globalstatus = false,
+      refresh = {
+        statusline = 2000,
+        tabline = 2000,
+        winbar = 2000,
+      },
     },
     sections = {
       lualine_a = { "mode" },
