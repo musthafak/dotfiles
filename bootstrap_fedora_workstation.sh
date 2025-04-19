@@ -6,13 +6,13 @@ set -e
 [[ ! -f /etc/fedora-release ]] && echo "ERROR: Only supports fedora!" && exit 1
 
 # Enable RPM Fusion and VS Code repo.
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
     https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 
 # Install multi-media packages
 sudo dnf update --refresh
-sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+sudo dnf update -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 
 # Others
 sudo dnf install -y stow htop zsh lsd alacritty
