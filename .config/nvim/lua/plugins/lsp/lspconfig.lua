@@ -11,6 +11,7 @@ end
 -- Function to get the lsp server name
 local function get_lsp_server_name(lsp_config)
   local server_names = {
+    ["python-lsp-server"] = "pylsp",
     ["lua-language-server"] = "lua_ls",
     ["bash-language-server"] = "bashls",
   }
@@ -42,6 +43,38 @@ return {
 
     local keymap = vim.keymap -- for conciseness
     local lsp_settings = {
+      pylsp = {
+        settings = {
+          pylsp = {
+            plugins = {
+              autopep8 = {
+                enabled = false,
+              },
+              mccabe = {
+                enabled = false,
+              },
+              preload = {
+                enabled = true,
+              },
+              pycodestyle = {
+                enabled = false,
+              },
+              pydocstyle = {
+                enabled = false,
+              },
+              pyflakes = {
+                enabled = false,
+              },
+              pylint = {
+                enabled = false,
+              },
+              yapf = {
+                enabled = false,
+              },
+            },
+          },
+        },
+      },
       pyright = {
         settings = {
           python = {
@@ -145,7 +178,7 @@ return {
         focusable = false,
         style = "minimal",
         border = "rounded",
-        source = "always",
+        source = true,
         header = "",
         prefix = "",
       },

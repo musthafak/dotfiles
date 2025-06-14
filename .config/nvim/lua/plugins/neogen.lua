@@ -1,6 +1,5 @@
 return {
   "musthafak/neogen",
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
   keys = {
     { "<leader>ds", "<cmd>Neogen<CR>", { desc = "Generate docstring" } },
   },

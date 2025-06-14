@@ -1,7 +1,8 @@
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
   },
   event = { "VeryLazy" },
   config = function()
@@ -17,8 +18,8 @@ return {
         "lua_ls",
         "pyright",
       },
-      -- auto-install configured servers (with lspconfig)
-      automatic_installation = false, -- not the same as ensure_installed
+      -- don't auto enable installed servers
+      automatic_enable = false,
     })
   end,
 }

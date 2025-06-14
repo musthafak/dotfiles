@@ -35,6 +35,12 @@ return {
       },
     })
 
+    conform.formatters.black = {
+      prepend_args = function(self, ctx)
+        return { "--preview", "--unstable" }
+      end,
+    }
+
     -- install formatters
     require("mason-conform").setup({
       ignore_install = { "isort", "black" },

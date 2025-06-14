@@ -1,0 +1,22 @@
+return {
+  "saghen/blink.cmp",
+  -- dependencies = { 'rafamadriz/friendly-snippets' },
+  dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
+  version = "1.*",
+  opts = {
+    -- completion = { documentation = { auto_show = false } },
+    snippets = { preset = "luasnip" },
+    sources = {
+      default = { "lsp", "path", "snippets", "buffer" },
+    },
+    fuzzy = { implementation = "prefer_rust_with_warning" },
+    completion = {
+      menu = {
+        draw = {
+          columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+        },
+      },
+    },
+  },
+  -- opts_extend = { "sources.default" },
+}

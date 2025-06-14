@@ -9,8 +9,8 @@ return {
     local lint = require("lint")
     lint.linters_by_ft = {
       javascript = { "eslint_d" },
-      yaml = { "yamllint" },
-      yml = { "yamllint" },
+      -- yaml = { "yamllint" },
+      -- yml = { "yamllint" },
       json = { "jsonlint" },
       python = { "flake8", "pylint", "mypy" },
       lua = { "luacheck" },
