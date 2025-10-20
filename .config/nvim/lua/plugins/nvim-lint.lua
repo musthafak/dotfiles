@@ -13,7 +13,7 @@ return {
       -- yml = { "yamllint" },
       json = { "jsonlint" },
       python = { "flake8", "pylint", "mypy" },
-      lua = { "luacheck" },
+      -- lua = { "luacheck" },
     }
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
     vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {

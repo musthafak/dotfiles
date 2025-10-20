@@ -58,7 +58,7 @@ return {
           end
         end
         if not found then
-          vim.api.nvim_err_writeln(buf_formatter .. " formatter is not available")
+          vim.api.nvim_echo({ { buf_formatter .. " formatter is not available", "ErrorMsg" } }, true, { err = true })
         end
       end
       conform.format({ lsp_fallback = true, async = false, timeout_ms = 1000 })

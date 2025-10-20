@@ -62,12 +62,10 @@ multiplier = 5
 [selection]
 save_to_clipboard = true
 
-[terminal.shell]
-program = "/usr/bin/zsh"
-
 [window]
 decorations = "none"
 decorations_theme_variant = "Dark"
+startup_mode = "Maximized"
 
 [window.padding]
 x = 5
