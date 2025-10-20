@@ -32,9 +32,6 @@ return {
     },
   },
   config = function()
-    -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
-
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -44,64 +41,57 @@ return {
     local keymap = vim.keymap -- for conciseness
     local lsp_settings = {
       pylsp = {
-        settings = {
-          pylsp = {
-            plugins = {
-              autopep8 = {
-                enabled = false,
-              },
-              mccabe = {
-                enabled = false,
-              },
-              preload = {
-                enabled = true,
-              },
-              pycodestyle = {
-                enabled = false,
-              },
-              pydocstyle = {
-                enabled = false,
-              },
-              pyflakes = {
-                enabled = false,
-              },
-              pylint = {
-                enabled = false,
-              },
-              yapf = {
-                enabled = false,
-              },
+        pylsp = {
+          plugins = {
+            autopep8 = {
+              enabled = false,
+            },
+            mccabe = {
+              enabled = false,
+            },
+            preload = {
+              enabled = true,
+            },
+            pycodestyle = {
+              enabled = false,
+            },
+            pydocstyle = {
+              enabled = false,
+            },
+            pyflakes = {
+              enabled = false,
+            },
+            pylint = {
+              enabled = false,
+            },
+            yapf = {
+              enabled = false,
             },
           },
         },
       },
       pyright = {
-        settings = {
-          python = {
-            analysis = {
-              autoImportCompletions = true,
-              autoSearchPaths = true,
-              diagnosticMode = "workspace",
-              typeCheckingMode = "off",
-              useLibraryCodeForTypes = true,
-            },
+        python = {
+          analysis = {
+            autoImportCompletions = true,
+            autoSearchPaths = true,
+            diagnosticMode = "workspace",
+            typeCheckingMode = "off",
+            useLibraryCodeForTypes = true,
           },
         },
       },
       lua_ls = {
-        settings = {
-          Lua = {
-            -- make the language server recognize "vim" global
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              -- make language server aware of runtime files
-              library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.stdpath("config") .. "/lua"] = true,
-              },
-            },
+        Lua = {
+          -- make the language server recognize "vim" global
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            checkThirdParty = false,
+            library = vim.tbl_filter(function(d)
+              return not d:match(vim.fn.stdpath("config") .. "/?a?f?t?e?r?")
+            end, vim.api.nvim_get_runtime_file("", true)),
           },
         },
       },
@@ -141,13 +131,19 @@ return {
       keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
       opts.desc = "Go to previous diagnostic"
-      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+      keymap.set("n", "[d", function()
+        vim.diagnostic.jump({ count = 1, float = true })
+      end, opts) -- jump to previous diagnostic in buffer
 
       opts.desc = "Go to next diagnostic"
-      keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+      keymap.set("n", "]d", function()
+        vim.diagnostic.jump({ count = -1, float = true })
+      end, opts) -- jump to next diagnostic in buffer
 
       opts.desc = "Show documentation for what is under cursor"
-      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+      keymap.set("n", "K", function()
+        vim.lsp.buf.hover({ border = "rounded" })
+      end, opts) -- show documentation for what is under cursor
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
@@ -184,30 +180,24 @@ return {
       },
     })
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "rounded",
-    })
-
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = "rounded",
-    })
-
     for _, server in ipairs(mason_registry.get_installed_packages()) do
       if not is_value_exists_in_table(server.spec.categories, "LSP") then
         goto continue
       end
       local server_name = get_lsp_server_name(server)
       if lsp_settings[server_name] ~= nil then
-        lspconfig[server_name].setup(vim.tbl_extend("force", lsp_settings[server_name], {
+        vim.lsp.config(server_name, {
           capabilities = capabilities,
           on_attach = on_attach,
-        }))
+          settings = lsp_settings[server_name],
+        })
       else
-        lspconfig[server_name].setup({
+        vim.lsp.config(server_name, {
           capabilities = capabilities,
           on_attach = on_attach,
         })
       end
+      vim.lsp.enable(server_name)
       ::continue::
     end
   end,

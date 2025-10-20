@@ -6,7 +6,7 @@ return {
     { "nvim-lua/plenary.nvim" },
     {
       "MeanderingProgrammer/render-markdown.nvim",
-      ft = { "markdown", "codecompanion" },
+      ft = { "codecompanion" },
     },
     { "hrsh7th/nvim-cmp" },
   },
