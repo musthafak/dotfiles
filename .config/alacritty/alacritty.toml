@@ -66,6 +66,7 @@ save_to_clipboard = true
 decorations = "none"
 decorations_theme_variant = "Dark"
 startup_mode = "Maximized"
+opacity = 0.98
 
 [window.padding]
 x = 5

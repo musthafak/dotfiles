@@ -1,6 +1,28 @@
 return {
   "numToStr/Comment.nvim",
-  event = { "VeryLazy" },
+  keys = {
+    -- Normal mode: toggle comment with <leader>/
+    {
+      "<leader>/",
+      function()
+        require("Comment.api").toggle.linewise.current()
+      end,
+      mode = "n",
+      desc = "Toggle line comment (normal)",
+    },
+    -- Visual mode: toggle comment for selected lines with <leader>/
+    {
+      "<leader>/",
+      function()
+        -- In visual mode we want to exit visual mode then toggle
+        local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+        vim.api.nvim_feedkeys(esc, "nx", false)
+        require("Comment.api").toggle.linewise(vim.fn.visualmode())
+      end,
+      mode = "x",
+      desc = "Toggle line comment (visual)",
+    },
+  },
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
@@ -15,7 +37,5 @@ return {
       -- for commenting tsx and jsx files
       pre_hook = ts_context_commentstring.create_pre_hook(),
     })
-    vim.keymap.set("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>")
-    vim.keymap.set("v", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>")
   end,
 }
