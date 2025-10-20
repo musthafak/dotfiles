@@ -20,6 +20,10 @@ require("lazy").setup({
   install = {
     colorscheme = { "tokyonight" },
   },
+  git = {
+    -- Use SSH instead of HTTPS
+    url_format = "git@github.com:%s.git",
+  },
   checker = {
     enabled = true,
     notify = false,
